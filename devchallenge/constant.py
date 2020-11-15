@@ -1,3 +1,7 @@
+"""
+Constants Module
+----------------
+"""
 PUNK_CONSTANTS = {
     "URL": 'https://api.punkapi.com/v2/beers',
     "BEER": {

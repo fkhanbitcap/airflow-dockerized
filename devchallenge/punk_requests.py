@@ -1,5 +1,9 @@
-import requests
+"""
+Punk Request module
+-------------------
+"""
 import json
+import requests
 from devchallenge.constant import PUNK_CONSTANTS
 
 
@@ -18,7 +22,8 @@ def get_beer_by_name(beer_name: str) -> json:
     :param beer_name: Str beer name information as partial or full match
     :return: List of Beer data in Json format
     """
-    return requests.get(PUNK_CONSTANTS["URL"], params={PUNK_CONSTANTS["BEER"]["NAME"]: beer_name}).json()
+    return requests.get(PUNK_CONSTANTS["URL"],
+                        params={PUNK_CONSTANTS["BEER"]["NAME"]: beer_name}).json()
 
 
 def get_beer_brewed_in(brewed_after: str, brewed_before: str) -> json:
@@ -28,5 +33,6 @@ def get_beer_brewed_in(brewed_after: str, brewed_before: str) -> json:
     :param brewed_before: Str Brewed before e.g 10.2018
     :return: List of Beer data in Json format or empty list
     """
-    return requests.get(PUNK_CONSTANTS["URL"], params={PUNK_CONSTANTS["BEER"]["AFTER"]: brewed_after,
-                                                       PUNK_CONSTANTS["BEER"]["BEFORE"]: brewed_before}).json()
+    return requests.get(PUNK_CONSTANTS["URL"],
+                        params={PUNK_CONSTANTS["BEER"]["AFTER"]: brewed_after,
+                                PUNK_CONSTANTS["BEER"]["BEFORE"]: brewed_before}).json()
