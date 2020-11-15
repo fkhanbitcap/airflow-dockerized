@@ -21,4 +21,5 @@ RUN python3 -m tox
 # Clean build
 RUN invoke clean build
 
-CMD ["/bin/sh"]
+# Serve documenation
+CMD ["python", "-m", "http.server", "-d", "build/sphinx/html"]
