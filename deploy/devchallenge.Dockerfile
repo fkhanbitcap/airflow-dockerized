@@ -14,3 +14,5 @@ RUN pip install python-boilerplate==0.4.10
 
 # Clean build
 RUN invoke clean build
+
+RUN python3 -m tox
