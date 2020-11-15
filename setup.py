@@ -7,7 +7,7 @@ from setuptools import setup, find_packages
 # Save version and author to __meta__.py
 version = open('VERSION').read().strip()
 dirname = os.path.dirname(__file__)
-path = os.path.join(dirname, 'devchallenge', '__meta__.py')
+path = os.path.join(dirname, 'src', '__meta__.py')
 meta = '''# Automatically created. Please do not edit.
 __version__ = '%s'
 __author__ = 'Muhamad Faizan Khan'
@@ -17,7 +17,7 @@ with open(path, 'w') as F:
 
 setup(
     # Basic info
-    name='devchallenge',
+    name='Dev Challenge',
     version=version,
     author='Muhamad Faizan Khan',
     author_email='mfkhan1994@gmail.com',

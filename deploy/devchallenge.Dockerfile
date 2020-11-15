@@ -3,14 +3,17 @@ FROM python:3.8.6-buster
 # Attach work directory
 WORKDIR /app
 
+# Copy code files
+COPY requirements.txt .
+
 # Install requirements
-RUN pip install -U python-boilerplate==0.4.10 pylint tox==3.20.1 Sphinx==3.3.1 invoke==1.4.1
+RUN pip install -r requirements.txt
 
 # Copy code files
 COPY . .
 
 # Code styling
-RUN pylint devchallenge
+RUN pylint src
 
 # perform virtual test
 RUN python3 -m tox

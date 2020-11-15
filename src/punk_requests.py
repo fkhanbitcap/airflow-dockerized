@@ -4,7 +4,7 @@ Punk Request module
 """
 import json
 import requests
-from devchallenge.constant import PUNK_CONSTANTS
+from src.constant import PUNK_CONSTANTS
 
 
 def get_beer_by_id(ids: str) -> json:

@@ -1,1 +1,6 @@
 requests==2.25.0
+python-boilerplate==0.4.10
+pylint
+tox==3.20.1
+Sphinx==3.3.1
+invoke==1.4.1

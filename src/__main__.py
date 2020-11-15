@@ -4,15 +4,15 @@ Main
 """
 import json
 import argparse
-from devchallenge import __version__
-from devchallenge import punk_requests
+from src import __version__
+from src import punk_requests
 
 
 def parse_arguments():
     """
     Creates a new argument parser.
     """
-    parser = argparse.ArgumentParser('devchallenge')
+    parser = argparse.ArgumentParser('src')
     parser.add_argument('--version', '-v', action='version', version='%(prog)s ' + __version__)
     parser.add_argument('--file', '-f', help='Write output to file (file name)',
                         type=str, default='', required=False)

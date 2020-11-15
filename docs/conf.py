@@ -15,11 +15,12 @@
 
 import sys
 import os
+import src
 
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
-#sys.path.insert(0, os.path.abspath('.'))
+sys.path.insert(0, os.path.abspath('/home/faizan/Desktop/Ass/devchallenge'))
 
 # -- General configuration ------------------------------------------------
 
@@ -51,16 +52,18 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = 'devchallenge'
+project = 'src'
 project_title = project.title()
 author = 'Muhamad Faizan Khan'
-copyright = '2016, %s' % author
+copyright = '2020, %s' % author
 
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
 # built documents.
+print(__file__)
 dirname = os.path.dirname(__file__)
+print(dirname)
 projdir = os.path.dirname(dirname)
 release = open(os.path.join(projdir, 'VERSION')).read().strip()
 version = '.'.join(release.split('.')[:2])
