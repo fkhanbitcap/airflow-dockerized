@@ -33,15 +33,15 @@ def parse_arguments():
     return parser.parse_args()
 
 
-def request_result(output: json, file: str):
+def request_result(output: json, file_path: str):
     """
     Show result in file on on terminal
     """
-    if file == '':
+    if file_path == '':
         print(json.dumps(output, indent=4))
     else:
-        with open(file, "w") as f:
-            f.write(json.dumps(output, indent=4))
+        with open(file_path, "w") as file:
+            file.write(json.dumps(output, indent=4))
 
 
 def main():
