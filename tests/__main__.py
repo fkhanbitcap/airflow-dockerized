@@ -1,7 +1,7 @@
 import os
 import argparse
 
-from src.devchallenge import __version__
+from devchallenge import __version__
 
 
 def get_parser():
@@ -33,7 +33,7 @@ def main(args=None):
         )
 
     # Get data from test_module
-    import devchallenge.tests as test_module
+    import tests as test_module
     test_path = os.path.abspath(os.path.dirname(test_module.__file__))
     pytest.main([test_path, '-m', 'not documentation'])
 

@@ -1,6 +1,5 @@
 import argparse
-import src.devchallenge
-from src.devchallenge import __version__
+from devchallenge import __version__
 
 
 def get_parser():

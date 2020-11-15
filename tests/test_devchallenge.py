@@ -1,5 +1,4 @@
-import pytest
-import src.devchallenge as devchallenge
+import devchallenge as devchallenge
 
 
 def test_project_defines_author_and_version():
