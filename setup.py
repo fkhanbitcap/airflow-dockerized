@@ -37,8 +37,8 @@ setup(
     ],
 
     # Packages and dependencies
-    package_dir={'': 'devchallenge'},
-    packages=find_packages('devchallenge'),
+    package_dir={'': '.'},
+    packages=find_packages('.'),
     install_requires=[
     ],
     extras_require={
