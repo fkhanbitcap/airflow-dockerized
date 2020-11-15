@@ -1,3 +1,7 @@
+"""
+Main
+-------------
+"""
 import argparse
 from devchallenge import __version__
 

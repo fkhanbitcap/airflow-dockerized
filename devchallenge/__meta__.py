@@ -1,3 +1,6 @@
-# Automatically created. Please do not edit.
+"""
+Dev Challenge Meta
+------------------
+"""
 __version__ = '0.1.0'
 __author__ = 'Muhamad Faizan Khan'
