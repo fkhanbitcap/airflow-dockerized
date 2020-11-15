@@ -52,7 +52,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = 'src'
+project = 'Dev Challenge'
 project_title = project.title()
 author = 'Muhamad Faizan Khan'
 copyright = '2020, %s' % author

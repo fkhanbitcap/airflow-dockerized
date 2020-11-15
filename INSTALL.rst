@@ -4,7 +4,7 @@ Installation instructions
 
 devchallenge can be installed using pip::
 
-    $ python -m pip install devchallenge
+    $ python -m pip install src
 
 This command will fetch the archive and its dependencies from the internet and
 install them. 
