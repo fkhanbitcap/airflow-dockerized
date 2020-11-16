@@ -32,7 +32,7 @@ dag = DAG(
 
 t1 = DockerOperator(
     task_id='DockerOperator',
-    image='devchallenge_devchallenge',
+    image='faizan-k_devchallenge',
     api_version='auto',
     auto_remove=True,
     command='byfood -f "{}"'.format(food_pairing),
