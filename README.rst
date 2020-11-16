@@ -44,3 +44,7 @@ Set able parameters in Airflow:
 2.  beer_id [exact matched]
 3.  brewed_from [i.e. 10-2011], brewed_until[i.e. 10-2013]
 4.  food_pairing [i.e. cream_cheese_frosting] # use underscore insteadof space
+
+Airflow Admin url::
+
+     http://0.0.0.0:8080
