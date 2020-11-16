@@ -35,7 +35,7 @@ t1 = DockerOperator(
     image='devchallenge_devchallenge',
     api_version='auto',
     auto_remove=True,
-    command="byfood -f " + str(food_pairing),
+    command='byfood -f "{}"'.format(food_pairing),
     docker_url="unix://var/run/docker.sock",
     network_mode="bridge",
     xcom_push=True,
@@ -46,8 +46,8 @@ t1 = DockerOperator(
 def perform_calculation(**context):
     output = json.loads(context['ti'].xcom_pull(task_ids='DockerOperator'))
     avg_ibu_ibv = json.dumps({
-        "avg_ibu": sum([i['ibu'] for i in output]) / len(output),
-        "avg_abv": sum([i['abv'] for i in output]) / len(output)
+        "avg_ibu": sum([i['ibu'] for i in output]) / (len(output) or 1),
+        "avg_abv": sum([i['abv'] for i in output]) / (len(output) or 1)
     })
     context['ti'].xcom_push(key="AVG_IBU_ABV", value=avg_ibu_ibv)
     context['ti'].xcom_push(key="FOOD_PAIR_RESULT", value=json.dumps(output, indent=4))
