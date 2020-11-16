@@ -3,6 +3,7 @@ from airflow.operators.docker_operator import DockerOperator
 from airflow.operators.python_operator import PythonOperator
 from datetime import timedelta
 from airflow.utils.dates import days_ago
+import json
 
 from airflow.models import Variable
 
@@ -22,7 +23,7 @@ default_args = {
 
 
 dag = DAG(
-    'DevChallenge3',
+    'ByName',
     default_args=default_args,
     description='A simple tutorial DAG',
     schedule_interval='@daily',
@@ -37,13 +38,19 @@ t1 = DockerOperator(
     command="byname -n " + str(beer_name),
     docker_url="unix://var/run/docker.sock",
     network_mode="bridge",
+    xcom_push=True,
     dag=dag
 )
 
 
 def perform_calculation(**context):
-    # print(brewed_until)
-    print('hi')
+    output = json.loads(context['ti'].xcom_pull(task_ids='DockerOperator'))
+    avg_ibu_ibv = json.dumps({
+        "avg_ibu": sum([i['ibu'] for i in output]) / len(output),
+        "avg_abv": sum([i['abv'] for i in output]) / len(output)
+    })
+    context['ti'].xcom_push(key="AVG_IBU_ABV", value=avg_ibu_ibv)
+    print(avg_ibu_ibv)
 
 
 t2 = PythonOperator(
