@@ -1,12 +1,12 @@
 version: "3.7"
 
 services:
-#  devchallenge:
-#    build:
-#      context: .
-#      dockerfile: deploy/devchallenge.Dockerfile
-#    ports:
-#      - "8081:8000"
+  devchallenge:
+    build:
+      context: .
+      dockerfile: deploy/devchallenge.Dockerfile
+    ports:
+      - "8081:8000"
 
   postgres:
     image: postgres:9.6
@@ -41,6 +41,7 @@ services:
     ports:
       - "8080:8080"
     command: webserver
+    privileged: true
     healthcheck:
       test: [ "CMD-SHELL", "[ -f /usr/local/airflow/airflow-webserver.pid ]" ]
       interval: 30s

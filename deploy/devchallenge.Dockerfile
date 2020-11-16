@@ -22,4 +22,5 @@ RUN python3 -m tox
 RUN invoke clean build
 
 # Serve documenation
-CMD ["python", "-m", "http.server", "-d", "build/sphinx/html"]
+ENTRYPOINT ["python", "-m", "src"]
+
