@@ -16,6 +16,21 @@ If you've downloaded the tarball, unpack it, and execute::
 You might prefer to install it system-wide. In this case, skip the ``--user``
 option and execute as superuser by prepending the command with ``sudo``.
 
+If you want to build the code from scratch, and documentation::
+
+    $ invoke clean build
+
+\* Documentation will be build in directory `build/sphinx/html`
+
+Test cases are executed in tox virtual environment::
+
+    $ python3 -m tox
+
+If you want to build docker images using docker-compose::
+
+    $ docker-compose build
+
+
 
 Troubleshoot
 ------------
