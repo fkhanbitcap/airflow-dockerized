@@ -17,15 +17,15 @@ default_args = {
         'start_date': days_ago(2),
         'email_on_failure': False,
         'email_on_retry': False,
-        'retries': 2,
-        'retry_delay': timedelta(minutes=1)
+        'retries': 5,
+        'retry_delay': timedelta(minutes=5)
 }
 
 
 dag = DAG(
     'ByName',
     default_args=default_args,
-    description='A simple tutorial DAG',
+    description='Filter by name dag',
     schedule_interval='@daily',
 )
 

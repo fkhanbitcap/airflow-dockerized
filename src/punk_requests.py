@@ -36,3 +36,21 @@ def get_beer_brewed_in(brewed_after: str, brewed_before: str) -> json:
     return requests.get(PUNK_CONSTANTS["URL"],
                         params={PUNK_CONSTANTS["BEER"]["AFTER"]: brewed_after,
                                 PUNK_CONSTANTS["BEER"]["BEFORE"]: brewed_before}).json()
+
+
+def get_beer_by_food(food_paring: str) -> json:
+    """
+    Get beer brewed in interval
+    :param food_paring: Str to math with food options [in fuzzy search]
+    :return: List of Beer data in Json format or empty list
+    """
+    res = requests.get(PUNK_CONSTANTS["URL"],
+                       params={PUNK_CONSTANTS["BEER"]["FOOD_PAIRING"]: food_paring}).json()
+    return [{
+        "id": b["id"],
+        "name": b["name"],
+        "food_pairing": b["food_pairing"],
+        "abv": b["abv"],
+        "ibu": b["ibu"]
+      }
+     for b in res]

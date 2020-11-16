@@ -8,6 +8,7 @@ PUNK_CONSTANTS = {
         "ID": "ids",
         "NAME": "beer_name",
         "AFTER": "brewed_after",
-        "BEFORE": "brewed_before"
+        "BEFORE": "brewed_before",
+        "FOOD_PAIRING": "food"
     }
 }

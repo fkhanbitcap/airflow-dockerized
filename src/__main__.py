@@ -26,6 +26,11 @@ def parse_arguments():
     by_id = sub_parser.add_parser('byid', help='Str exact id or ids in (id|id|...) format')
     by_id.add_argument('--id', '-i', type=str, help='id as string', required=True)
 
+    by_food = sub_parser.add_parser('byfood',
+                                    help='String beer search by food pairs information as '
+                                         'partial or full match')
+    by_food.add_argument('--food-pairs', '-f', type=str, help='Food as string', required=True)
+
     by_id = sub_parser.add_parser('byinterval', help='Get beer brewed in interval')
     by_id.add_argument('--from-date', '-fd', type=str, help='date i.e. 10-11', required=True)
     by_id.add_argument('--until-date', '-ud', type=str, help='date i.e. 10-11', required=True)
@@ -55,6 +60,8 @@ def main():
         request_result(punk_requests.get_beer_by_id(args.id), args.file)
     elif args.sub == 'byinterval':
         request_result(punk_requests.get_beer_brewed_in(args.from_date, args.until_date), args.file)
+    elif args.sub == 'byfood':
+        request_result(punk_requests.get_beer_by_food(args.food_pairs), args.file)
 
 
 if __name__ == '__main__':

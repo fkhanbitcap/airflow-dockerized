@@ -7,8 +7,7 @@ import json
 
 from airflow.models import Variable
 
-brewed_from = Variable.get("brewed_from", "10-2011")
-brewed_until = Variable.get("brewed_until", "09-2013")
+food_pairing = Variable.get("food_pairing", "cream_cheese_frosting")
 
 
 default_args = {
@@ -22,10 +21,11 @@ default_args = {
         'retry_delay': timedelta(minutes=5)
 }
 
+
 dag = DAG(
-    'BeerByInterval',
+    'ByFoodPairing',
     default_args=default_args,
-    description='A simple tutorial DAG',
+    description='Filter food pairing dag',
     schedule_interval='@daily',
 )
 
@@ -35,7 +35,7 @@ t1 = DockerOperator(
     image='devchallenge_devchallenge',
     api_version='auto',
     auto_remove=True,
-    command="byinterval -f " + brewed_from + " -u " + brewed_until,
+    command="byfood -f " + str(food_pairing),
     docker_url="unix://var/run/docker.sock",
     network_mode="bridge",
     xcom_push=True,
@@ -50,6 +50,7 @@ def perform_calculation(**context):
         "avg_abv": sum([i['abv'] for i in output]) / len(output)
     })
     context['ti'].xcom_push(key="AVG_IBU_ABV", value=avg_ibu_ibv)
+    context['ti'].xcom_push(key="FOOD_PAIR_RESULT", value=json.dumps(output, indent=4))
     print(avg_ibu_ibv)
 
 
