@@ -25,7 +25,7 @@ dag = DAG(
     'BeerByInterval',
     default_args=default_args,
     description='A simple tutorial DAG',
-    schedule_interval=timedelta(days=1),
+    schedule_interval='@daily',
 )
 
 
@@ -53,3 +53,4 @@ t2 = PythonOperator(
     dag=dag
 )
 
+t1 >> t2

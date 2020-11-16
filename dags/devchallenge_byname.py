@@ -25,7 +25,7 @@ dag = DAG(
     'DevChallenge3',
     default_args=default_args,
     description='A simple tutorial DAG',
-    schedule_interval=timedelta(days=1),
+    schedule_interval='@daily',
 )
 
 
@@ -42,7 +42,7 @@ t1 = DockerOperator(
 
 
 def perform_calculation(**context):
-    print(brewed_until)
+    # print(brewed_until)
     print('hi')
 
 
@@ -53,3 +53,4 @@ t2 = PythonOperator(
     dag=dag
 )
 
+t1 >> t2

@@ -25,7 +25,7 @@ dag = DAG(
     'BeerById',
     default_args=default_args,
     description='A simple tutorial DAG',
-    schedule_interval=timedelta(days=1),
+    schedule_interval='@daily',
 )
 
 
@@ -34,7 +34,7 @@ t1 = DockerOperator(
     image='devchallenge_devchallenge',
     api_version='auto',
     auto_remove=True,
-    command="byname -i " + str(beer_id),
+    command="byid -i " + str(beer_id),
     docker_url="unix://var/run/docker.sock",
     network_mode="bridge",
     dag=dag
@@ -42,7 +42,7 @@ t1 = DockerOperator(
 
 
 def perform_calculation(**context):
-    print(brewed_until)
+    # print(brewed_until)
     print('hi')
 
 
@@ -53,3 +53,4 @@ t2 = PythonOperator(
     dag=dag
 )
 
+t1 >> t2
