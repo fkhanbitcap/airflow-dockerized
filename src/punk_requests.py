@@ -33,9 +33,18 @@ def get_beer_brewed_in(brewed_after: str, brewed_before: str) -> json:
     :param brewed_before: Str Brewed before e.g 10.2018
     :return: List of Beer data in Json format or empty list
     """
-    return requests.get(PUNK_CONSTANTS["URL"],
+    res = requests.get(PUNK_CONSTANTS["URL"],
                         params={PUNK_CONSTANTS["BEER"]["AFTER"]: brewed_after,
                                 PUNK_CONSTANTS["BEER"]["BEFORE"]: brewed_before}).json()
+    return [{
+        "id": b["id"],
+        "name": b["name"],
+        "food_pairing": b["food_pairing"],
+        "first_brewed": b["first_brewed"],
+        "abv": b["abv"],
+        "ibu": b["ibu"]
+        }
+        for b in res]
 
 
 def get_beer_by_food(food_paring: str) -> json:
@@ -52,5 +61,5 @@ def get_beer_by_food(food_paring: str) -> json:
         "food_pairing": b["food_pairing"],
         "abv": b["abv"],
         "ibu": b["ibu"]
-      }
-     for b in res]
+        }
+        for b in res]
