@@ -2,6 +2,7 @@ version: "3.7"
 
 services:
   bitcap:
+    container_name: bitcap
     build:
       context: .
       dockerfile: deploy/bitcap.Dockerfile
@@ -39,7 +40,7 @@ services:
       - ./dags:/usr/local/airflow/dags
       - /var/run/docker.sock:/var/run/docker.sock
     ports:
-      - "8080:8080"
+      - "80:8080"
     command: webserver
     privileged: true
     healthcheck:

@@ -32,7 +32,7 @@ dag = DAG(
 
 t1 = DockerOperator(
     task_id='DockerOperator',
-    image='faizan-k_devchallenge',
+    image='bitcap',
     api_version='auto',
     auto_remove=True,
     command='byinterval -f "{}" -u "{}"'.format(brewed_from, brewed_until),
