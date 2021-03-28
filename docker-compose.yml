@@ -1,10 +1,10 @@
 version: "3.7"
 
 services:
-  devchallenge:
+  bitcap:
     build:
       context: .
-      dockerfile: deploy/devchallenge.Dockerfile
+      dockerfile: deploy/bitcap.Dockerfile
     ports:
       - "8081:8000"
 

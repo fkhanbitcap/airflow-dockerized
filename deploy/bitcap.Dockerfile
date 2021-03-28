@@ -12,12 +12,6 @@ RUN pip install -r requirements.txt
 # Copy code files
 COPY . .
 
-# Code styling
-RUN pylint src
-
-# perform virtual test
-RUN python3 -m tox
-
 # Clean build
 RUN invoke clean build
 
