@@ -1,13 +1,6 @@
 version: "3.7"
 
 services:
-  bitcap:
-    container_name: bitcap
-    build:
-      context: .
-      dockerfile: deploy/bitcap.Dockerfile
-    ports:
-      - "8081:8000"
 
   postgres:
     image: postgres:9.6

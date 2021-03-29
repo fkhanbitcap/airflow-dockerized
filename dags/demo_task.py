@@ -1,4 +1,3 @@
-import json
 from datetime import timedelta
 
 from airflow import DAG
@@ -16,15 +15,15 @@ default_args = {
         'email_on_failure': False,
         'email_on_retry': False,
         'retries': 5,
-        'retry_delay': timedelta(hours=6)
+        'retry_delay': timedelta(minutes=1)
 }
 
 
 dag = DAG(
-    'ByFoodPairing',
+    'Demo_Dag_Please_leave_it_as_it_is',
     default_args=default_args,
-    description='Filter food pairing dag',
-    schedule_interval='@daily',
+    description='Bitcap dag configuration',
+    schedule_interval='@hourly',
 )
 
 
@@ -41,7 +40,7 @@ t1 = DockerOperator(
 
 
 def perform_calculation(**context):
-    output = json.loads(context['ti'].xcom_pull(task_ids='DockerOperator'))
+    output = context['ti'].xcom_pull(task_ids='DockerOperator')
     print(output)
 
 
