@@ -40,11 +40,11 @@ services:
       - ./dags:/usr/local/airflow/dags
       - /var/run/docker.sock:/var/run/docker.sock
     ports:
-      - "80:8080"
+      - "8080:8080"
     command: webserver
     privileged: true
     healthcheck:
       test: [ "CMD-SHELL", "[ -f /usr/local/airflow/airflow-webserver.pid ]" ]
-      interval: 30s
+      interval: 60s
       timeout: 30s
       retries: 3
