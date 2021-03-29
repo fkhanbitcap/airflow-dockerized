@@ -8,14 +8,15 @@ from airflow.operators.python_operator import PythonOperator
 
 
 default_args = {
-        'owner': 'Muhammad Faizan Khan',
-        'description': 'Use of the DockerOperator',
-        'depend_on_past': False,
-        'start_date': days_ago(1),
-        'email_on_failure': False,
-        'email_on_retry': False,
-        'retries': 5,
-        'retry_delay': timedelta(minutes=1)
+    'owner': 'Muhammad Faizan Khan',
+    'description': 'Use of the DockerOperator',
+    'depend_on_past': False,
+    'start_date': days_ago(1),
+    'email_on_failure': False,
+    'email_on_retry': False,
+    'retries': 5,
+    'max_active_runs': 1,
+    'retry_delay': timedelta(minutes=1)
 }
 
 
